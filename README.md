@@ -8,7 +8,8 @@ Catching Synchronized Behavior in Large Directed Graphs (KDD 2014). See www.meng
     Date: 2014
 	Version:
 		0.1: Aug 2014
-		0.2 (current): Oct 2014 (+readme, +licence)
+		0.2: Oct 2014 (+readme, +licence)
+		0.3: Mar 27, 2015 (+.sh)
 
 Installation:
 	Python 2.6 or 2.7
@@ -29,13 +30,13 @@ CITING THE WORK ----------------------------------
 
 If your work uses or refers to CatchSync, please cite the papers using the following bibtex entries:
 
-@inproceedings{jiang2014catchsync,\n
-  title={CatchSync: catching synchronized behavior in large directed graphs},\n
-  author={Jiang, Meng and Cui, Peng and Beutel, Alex and Faloutsos, Christos and Yang, Shiqiang},\n
-  booktitle={Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining},\n
-  pages={941--950},\n
-  year={2014},\n
-  organization={ACM}\n
+@inproceedings{jiang2014catchsync,
+  title={CatchSync: catching synchronized behavior in large directed graphs},
+  author={Jiang, Meng and Cui, Peng and Beutel, Alex and Faloutsos, Christos and Yang, Shiqiang},
+  booktitle={Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining},
+  pages={941--950},
+  year={2014},
+  organization={ACM}
 }
 
 If you use CatchSync for research or commercial purposes, please let us know
