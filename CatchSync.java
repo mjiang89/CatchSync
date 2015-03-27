@@ -1,7 +1,27 @@
 /**
-* Author: Meng Jiang
-* Date: Feb 22, 2014
-* Co-author: Alex Beutel, Christos Faloutsos
+* Given a directed graph with millions of nodes, how can we automatically spot anomalies?
+* Suspicious graph patterns show up in many applications,
+* from Twitter users who buy fake followers,
+* manipulating the social network,
+* to botnet members performing distributed denial of service attacks,
+* disturbing the network traffic graph.
+* 
+* Input: node pairs (edge list) of a directed graph;
+* Output:
+*   1. Feature space plots: in-degree vs. authority for target nodes
+*                           (out-degree vs. hubness for source nodes);
+*   2. Synchronicity (coherence) vs. normality: for source nodes.
+*
+* Edited and Copyright by Meng Jiang
+* Last update: Oct 29, 2014
+*
+* 1st: Feb 22, 2014
+* 2nd: Sep 27, 2014
+* 3rd: Oct  8, 2014
+* 4th: Oct 20, 2014
+*
+* CatchSync: Catch Synchronized Behavior in Large Directed Graphs (KDD 2014 Best Paper Final List)
+* Meng Jiang, Peng Cui, Alex Beutel, Christos Faloutsos and Shiqiang Yang
 */
 
 import java.io.BufferedReader;

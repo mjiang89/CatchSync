@@ -1,6 +1,28 @@
-# Author: Meng Jiang
-# Date: Jan 20, 2014
-# Co-author: Alex Beutel, Christos Faloutsos
+# /**
+# * Given a directed graph with millions of nodes, how can we automatically spot anomalies?
+# * Suspicious graph patterns show up in many applications,
+# * from Twitter users who buy fake followers,
+# * manipulating the social network,
+# * to botnet members performing distributed denial of service attacks,
+# * disturbing the network traffic graph.
+# * 
+# * Input: node pairs (edge list) of a directed graph;
+# * Output:
+# *   1. Feature space plots: in-degree vs. authority for target nodes
+# *                           (out-degree vs. hubness for source nodes);
+# *   2. Synchronicity (coherence) vs. normality: for source nodes.
+# *
+# * Edited and Copyright by Meng Jiang
+# * Last update: Oct 29, 2014
+# *
+# * 1st: Feb 22, 2014
+# * 2nd: Sep 27, 2014
+# * 3rd: Oct  8, 2014
+# * 4th: Oct 20, 2014
+# *
+# * CatchSync: Catch Synchronized Behavior in Large Directed Graphs (KDD 2014 Best Paper Final List)
+# * Meng Jiang, Peng Cui, Alex Beutel, Christos Faloutsos and Shiqiang Yang
+# */
 
 setwd('.')
 args <- commandArgs()
@@ -36,6 +58,7 @@ REMOVEEMPTY <- 1
 
 # expression to show the numbers in plot - axis, ...
 expr <- function(x) {
+  x <- as.numeric(x)
   if (x >= 1e4) return(signif(x,1))
   if (x >= 1) return(round(x))
   if (x >= 1e-3) return(signif(x,DIGITNUMSMALL))
@@ -44,6 +67,7 @@ expr <- function(x) {
   return(0)
 }
 exprlist <- function(xs,sz) {
+  xs <- as.numeric(xs)	
   ret <- array('',dim=c(sz,1))
   for (i in 1:sz) {
     temp <- expr(xs[i])
@@ -131,7 +155,7 @@ compress <- function(data,Ns,mathtype) {
         endi <- min(starti+gap-1,N+2)
         startj <- 1+j*gap
         endj <- min(startj+gap-1,N)
-        datac[i+1,j+1] <- sum(data[starti:endi,startj:endj])
+        datac[i+1,j+1] <- sum(as.numeric(data[starti:endi,startj:endj]))
       }
     }
     Ny <- 0
@@ -179,7 +203,7 @@ compress <- function(data,Ns,mathtype) {
         endi <- min(starti+gap-1,N+2)
         startj <- 1+j*gap
         endj <- min(startj+gap-1,N)
-        datac[i+1,j+1] <- sum(data[starti:endi,startj:endj])
+        datac[i+1,j+1] <- sum(as.numeric(data[starti:endi,startj:endj]))
       }
     }
     Ny <- 0
@@ -596,9 +620,9 @@ jethdplot <- function() {
   mathtype <- args[8]
   Ns <- as.numeric(args[9])
   arr <- strsplit(args[10],'-')[[1]]
-  if (arr[1] == '1m') strsz <- '【1M】'
-  if (arr[1] == '2m') strsz <- '【2M】'
-  if (arr[1] == '3m') strsz <- '【3M】'
+  if (arr[1] == '1m') strsz <- '[1M]'
+  if (arr[1] == '2m') strsz <- '[2M]'
+  if (arr[1] == '3m') strsz <- '[3M]'
   if (arr[2] == 'pop') camoutp <- 'TOP POPULAR'
   if (arr[2] == 'rand') camoutp <- 'RANDOM from ALL'  
   data <- compress(as.matrix(read.csv(cellfile,header=F)),Ns,mathtype)
@@ -621,7 +645,7 @@ jethdplot <- function() {
     legend(plotbound$forexa,1.05,bg='transparent',border='transparent',horiz=F,bty='n',
            c(paste(strsz,' + 31K nodes',sep=''),
              paste(injectsz,'% injected targets',sep=''),
-             paste('【',camousz,'%】 as camouflage',sep=''),
+             paste('[',camousz,'%] as camouflage',sep=''),
              paste('to ',camoutp,sep='')),
            cex=3.5,pch=20,col='white')
   }
@@ -637,9 +661,9 @@ jetsnplot <- function() {
   mathtype <- args[8]
   Ns <- as.numeric(args[9])
   arr <- strsplit(args[10],'-')[[1]]
-  if (arr[1] == '1m') strsz <- '【1M】'
-  if (arr[1] == '2m') strsz <- '【2M】'
-  if (arr[1] == '3m') strsz <- '【3M】'
+  if (arr[1] == '1m') strsz <- '[1M]'
+  if (arr[1] == '2m') strsz <- '[2M]'
+  if (arr[1] == '3m') strsz <- '[3M]'
   if (arr[2] == 'pop') camoutp <- 'TOP POPULAR'
   if (arr[2] == 'rand') camoutp <- 'RANDOM from ALL'  
   data <- compress(as.matrix(read.csv(cellfile,header=F)),Ns,mathtype)
@@ -662,7 +686,7 @@ jetsnplot <- function() {
     legend(plotbound$forexa,1.05,bg='transparent',border='transparent',horiz=F,bty='n',
            c(paste(strsz,' + 31K nodes',sep=''),
              paste(injectsz,'% injected targets',sep=''),
-             paste('【',camousz,'%】 as camouflage',sep=''),
+             paste('[',camousz,'%] as camouflage',sep=''),
              paste('to ',camoutp,sep='')),
            cex=3.5,pch=20,col='white')
   }
