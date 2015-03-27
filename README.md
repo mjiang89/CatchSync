@@ -18,7 +18,7 @@ Data: see ./data/socialgraph
 	A directed graph (sample data). 2 columns {node1,node2}: node1 follows (connects to) node2.
 	Injected users: 'badXXXX'; normal users: 'userXXXX'.
 
-Please double-click runCatchSync.bat.
+Please run runCatchSync.bat or runCatchSync.sh
 
 Plots: see ./plot/*.png
 followee_feature_space.png: A feature space created by followees' features (in-degree and authority).
@@ -29,15 +29,14 @@ CITING THE WORK ----------------------------------
 
 If your work uses or refers to CatchSync, please cite the papers using the following bibtex entries:
 
-@inproceedings{jiang2014catchsync,
-  title={CatchSync: catching synchronized behavior in large directed graphs},
-  author={Jiang, Meng and Cui, Peng and Beutel, Alex and Faloutsos, Christos and Yang, Shiqiang},
-  booktitle={Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining},
-  pages={941--950},
-  year={2014},
-  organization={ACM}
+@inproceedings{jiang2014catchsync,\n
+  title={CatchSync: catching synchronized behavior in large directed graphs},\n
+  author={Jiang, Meng and Cui, Peng and Beutel, Alex and Faloutsos, Christos and Yang, Shiqiang},\n
+  booktitle={Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining},\n
+  pages={941--950},\n
+  year={2014},\n
+  organization={ACM}\n
 }
-
 
 If you use CatchSync for research or commercial purposes, please let us know
 your institution(company) and whether it's ok to mention it among the users of CatchSync.
